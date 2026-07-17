@@ -1,0 +1,19 @@
+// Copia y pega este contenido en Firebase Console → Firestore Database → Reglas.
+//
+// Como la app no tiene login (para que sea rápida de usar por tus clientes),
+// estas reglas permiten leer/escribir SOLO dentro de la colección "sebatrainer"
+// que usa esta app — no dejan tocar el resto de tu proyecto de Firebase.
+//
+// Nota: cualquier persona con el link de tu app instalada podría, en teoría,
+// leer o modificar estos datos (no hay contraseña). Para un entrenador con un
+// grupo cerrado de clientes esto suele ser un riesgo aceptable, pero si más
+// adelante quieres login con contraseña, avísame y lo agregamos.
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /sebatrainer/{document} {
+      allow read, write: if true;
+    }
+  }
+}
